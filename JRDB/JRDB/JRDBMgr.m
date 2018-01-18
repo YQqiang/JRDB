@@ -138,7 +138,7 @@ static JRDBMgr *__shareInstance;
 }
 
 - (NSString *)defaultEncryptKey {
-    if (_defaultEncryptKey) {
+    if (!_defaultEncryptKey) {
         _defaultEncryptKey = @"";
     }
     return _defaultEncryptKey;
