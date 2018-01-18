@@ -43,7 +43,11 @@ void SqlLog(id sql) {
 
 - (BOOL)jr_openSynchronized:(BOOL)synchronized {
     return [[self jr_executeSync:synchronized block:^id _Nullable(id<JRPersistentBaseHandler> _Nonnull handler) {
-        return @([((FMDatabase *)handler) open]);
+        BOOL isOpen = [((FMDatabase *)handler) open];
+        if (isOpen) {
+            [(FMDatabase *)handler setKey:@"testkey"];
+        }
+        return @(isOpen);
     }] boolValue];
 }
 
