@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
     s.source_files          = "JRDB/JRDB/**/*.{h,m}"
     s.public_header_files   = "JRDB/JRDB/**/*.h"
 
-    s.dependency 'FMDB'
+    s.dependency 'FMDB/SQLCipher'
 
 end
