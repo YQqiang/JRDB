@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) NSString *defaultDatabasePath;///< default database path
 
+@property (nonatomic, strong, nullable) NSString *defaultEncryptKey;///< default encryptKey
+
 @property (nonatomic, assign) int maxConnectionCount;///< connetion count, 1 by default
 
 @property (nonatomic, assign) BOOL debugMode;///< print sql if YES;
@@ -28,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (id<JRPersistentHandler>)getHandler;
 /** get a sepecific database handler from the connection pool */
 - (id<JRPersistentHandler>)getHandlerWithPath:(NSString *)path;
+/** get a sepecific database handler from the connection pool encryptKey */
+- (id<JRPersistentHandler>)getHandlerWithPath:(NSString *)path encryptKey:(NSString *)encryptKey;
 
 /** physicaly delete the database */
 - (void)deleteDatabaseWithPath:(NSString * _Nullable)path;

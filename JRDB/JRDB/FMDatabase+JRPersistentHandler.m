@@ -42,10 +42,14 @@ void SqlLog(id sql) {
 #pragma mark  base operation
 
 - (BOOL)jr_openSynchronized:(BOOL)synchronized {
+    return [self jr_openSynchronized:synchronized encryptKey:@""];
+}
+
+- (BOOL)jr_openSynchronized:(BOOL)synchronized encryptKey:(NSString *)encryptKey {
     return [[self jr_executeSync:synchronized block:^id _Nullable(id<JRPersistentBaseHandler> _Nonnull handler) {
         BOOL isOpen = [((FMDatabase *)handler) open];
-        if (isOpen) {
-            [(FMDatabase *)handler setKey:@"testkey"];
+        if (isOpen && encryptKey && encryptKey.length > 0) {
+            [(FMDatabase *)handler setKey:encryptKey];
         }
         return @(isOpen);
     }] boolValue];

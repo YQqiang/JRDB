@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)jr_openSynchronized:(BOOL)synchronized;
 
+- (BOOL)jr_openSynchronized:(BOOL)synchronized encryptKey:(NSString *)encryptKey;
+
 - (BOOL)jr_closeSynchronized:(BOOL)synchronized;
 
 - (BOOL)jr_startTransaction;
